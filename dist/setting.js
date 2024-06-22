@@ -23,9 +23,9 @@ function show_storage() {
         .css({ "position": "fixed", "box-sizing": "border-box", "width": "70vw", "height": "70vh", "top": "15vh", "left": "15vw", "background-color": "#eeeeee", "padding": "5rem 1rem 1rem 1rem", "overflow-y": "auto" })
         .attr({ "id": "storage-showing-temp" })
         .append($(`<div><img src="img/close.svg"></div>`).attr({ "class": "button-d close-icon-fullscreen" }).on('click', function () { $("#storage-showing-temp").remove(); }))
-        .append($("<p>这是你的投票唯一记录摘要(128bit)。对比它可以了解投票是否被修改过。</p>"))
+        .append($("<p>這是你的投票唯一記錄摘要(128bit)。對比它可以瞭解投票是否被修改過。</p>"))
         .append($("<textarea></textarea>").val(LC.config.unique_code()).css({ "resize": "none", "height": "2rem", "width": "100%" }).attr({ "disabled": "disabled" }))
-        .append($("<p>这是你的详细存档配置。请把它复制下来并保存到一个安全的地方。</p>"))
+        .append($("<p>這是你的詳細存檔配置。請把它複製下來並保存到一個安全的地方。</p>"))
         .append($("<textarea></textarea>").val(storage).css({ "resize": "vertical", "min-height": "40vh", "width": "100%" }))
         .appendTo($("body"));
 }
@@ -36,9 +36,9 @@ function import_storage() {
         .css({ "position": "fixed", "box-sizing": "border-box", "width": "70vw", "height": "70vh", "top": "15vh", "left": "15vw", "background-color": "#eeeeee", "padding": "5rem 1rem 1rem 1rem", "overflow-y": "auto" })
         .attr({ "id": "storage-import-temp" })
         .append($(`<div><img src="img/close.svg"></div>`).attr({ "class": "button-d close-icon-fullscreen" }).on('click', function () { $("#storage-import-temp").remove(); }))
-        .append($("<p>请输入你的存档:</p>"))
+        .append($("<p>請輸入你的存檔:</p>"))
         .append($("<textarea></textarea>").css({ "resize": "vertical", "min-height": "40vh", "display": "block", "width": "100%" }))
-        .append($("<button class='button-d'>确定导入</button>").on('click', function () {
+        .append($("<button class='button-d'>確定導入</button>").on('click', function () {
         LC.config = LC.to_config(JSON.parse($("#storage-import-temp>textarea").val()));
         LC.set_init();
         $("#storage-import-temp").remove();
@@ -107,10 +107,10 @@ function submit_setting(save = false) {
     $("#settings-div").addClass("none-display");
 }
 function reset_setting() {
-    $("#titleSet").val("计票器");
+    $("#titleSet").val("計票器");
     $("#mainSepLineSet").val(6);
     $("#secSepLineSet").val(3);
-    $("#electors-list").val("张三,李四,王五");
+    $("#electors-list").val("張三,李四,王五");
 }
 function remove_elector(elector) {
     if (Ele.electors.length <= 1)
@@ -191,7 +191,7 @@ function start_electors_edit() {
         $changingWays.attr("active", '0');
         start_electors_edit();
     });
-    $("<span>在此序号之后:</span>").appendTo($changingFrame);
+    $("<span>在此序號之後:</span>").appendTo($changingFrame);
     $("<span></span>").attr({ "contentEditable": "true", "class": "button-i", "id": "afterid" }).text(Ele.electors.length.toString()).appendTo($changingFrame);
 }
 function start_electors_append() {
@@ -201,8 +201,8 @@ function start_electors_append() {
     $changingWays.children().removeClass("active");
     $("#changing-ways>button:nth-of-type(2)").addClass("active");
     $changingWays.attr({ "active": "2" });
-    $changingFrame.html('<p>请输入要增加的人员，用英文逗号或换行符分隔。</p>').append($("<textarea></textarea>").attr({ "id": "electors-append" }).css({ "width": "90%", "min-height": "2em", "resize": "vertical" }))
-        .append($("<button></button>").text("确定").addClass("button-d").on('click', function () {
+    $changingFrame.html('<p>請輸入要增加的人員，用英文逗號或換行符分隔。</p>').append($("<textarea></textarea>").attr({ "id": "electors-append" }).css({ "width": "90%", "min-height": "2em", "resize": "vertical" }))
+        .append($("<button></button>").text("確定").addClass("button-d").on('click', function () {
         var neles = $("#electors-append").val().replace("\r", "").replace("\n", ",").split(",");
         for (let i in neles) {
             add_elector(Ele.electors.length);
@@ -217,7 +217,7 @@ function start_electors_remove() {
     $changingWays.children().removeClass("active");
     $("#changing-ways>button:nth-of-type(3)").addClass("active");
     $changingWays.attr({ "active": "3" });
-    $changingFrame.html('').append($("<div><span>删除第n名及以后: </span><input type='number' id='electors-remove-nlast'></div>").append($("<button>确定</button>").attr({ "class": "button-d" }).on('click', function () {
+    $changingFrame.html('').append($("<div><span>刪除第n名及以後: </span><input type='number' id='electors-remove-nlast'></div>").append($("<button>確定</button>").attr({ "class": "button-d" }).on('click', function () {
         var n = parseInt($("#electors-remove-nlast").val());
         for (let i = 0; i < Ele.electors.length; i++) {
             let e = Ele.electors[i];
@@ -227,7 +227,7 @@ function start_electors_remove() {
             }
         }
     })))
-        .append($("<div><span>删除第n名及以前: </span><input type='number' id='electors-remove-nfirst'></div>").append($("<button>确定</button>").attr({ "class": "button-d" }).on('click', function () {
+        .append($("<div><span>刪除第n名及以前: </span><input type='number' id='electors-remove-nfirst'></div>").append($("<button>確定</button>").attr({ "class": "button-d" }).on('click', function () {
         var n = parseInt($("#electors-remove-nfirst").val());
         for (let i = 0; i < Ele.electors.length; i++) {
             let e = Ele.electors[i];

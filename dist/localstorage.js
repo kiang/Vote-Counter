@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @file 载入、初始化或修改localStorage
+ * @file 載入、初始化或修改localStorage
  */
 /// <reference path="../src/version.d.ts"/>
 /// <reference path="../src/md5.d.ts"/>
@@ -20,7 +20,7 @@ var LC;
             this.invalidVote = invalidVote;
         }
         /**
-         * @return 基础信息（基本不会动的信息）
+         * @return 基礎信息（基本不會動的信息）
          */
         to_object() {
             return {
@@ -37,7 +37,7 @@ var LC;
                 $("#titleSet").val(this.title);
             if (isHTMLQuickSet)
                 this.update_title();
-            document.title = "计票器 - " + title;
+            document.title = "計票器 - " + title;
         }
         set_voteSingle(voteSingle = this.voteSingle, isHTMLQuickSet = false) {
             if (isNaN(voteSingle)) {
@@ -79,7 +79,7 @@ var LC;
         update_voteSingle() { localStorage.setItem("VC_voteSingle", this.voteSingle.toString()); }
         update_basic() { localStorage.setItem("VC_basic", JSON.stringify(this.to_object())); }
         /**
-         * @brief 获取一个代表当前投票结果的简略字符串(只考虑敏感信息: votes/electorNames)
+         * @brief 獲取一個代表當前投票結果的簡略字符串(只考慮敏感信息: votes/electorNames)
          * @return 128bit字符串
          */
         unique_code() {
@@ -101,14 +101,14 @@ var LC;
     LC.to_config = to_config;
     var version_temp = Ver.to_version(version);
     if (lgi("VC_version") === null) {
-        LC.config = new Config(version, "计票器", 10, 3, [0, 0, 0], ["张三", "李四", "王五"], 1, 0);
+        LC.config = new Config(version, "計票器", 10, 3, [0, 0, 0], ["張三", "李四", "王五"], 1, 0);
         LC.config.update();
     }
     else {
         if (lgi("VC_inVote") === null) {
             localStorage.setItem("VC_inVote", "0");
         }
-        var tbasic = JSON.parse(lgi("VC_basic")), // 临时 | Config属误导性
+        var tbasic = JSON.parse(lgi("VC_basic")), // 臨時 | Config屬誤導性
         VC_votes_temp = lgi("VC_votes").split(","), VC_votes = [];
         for (let i in VC_votes_temp)
             VC_votes.push(parseInt(VC_votes_temp[i]));

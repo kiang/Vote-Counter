@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @file 初始化选举人
+ * @file 初始化選舉人
  */
 /// <reference path="../src/localstorage.ts" />
 /// <reference path="../src/elector.ts" />

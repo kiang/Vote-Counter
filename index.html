@@ -4,11 +4,11 @@
     <meta name="charset" content="utf-8"/>
     <meta name="generator" content="Visual Studio Code"/>
     <meta name="author" content="Jason Li"/>
-    <meta name="description" content="计票器是一个在线计票网站。通过点击计票，实时显示排名。如果对参选人员编号熟悉，那么这里绝对是你的不二之选。">
-    <meta name="keywords" content="计票,计票器,排名"/>
+    <meta name="description" content="計票器是一個在線計票網站。通過點擊計票，實時顯示排名。如果對參選人員編號熟悉，那麼這裡絕對是你的不二之選。">
+    <meta name="keywords" content="計票,計票器,排名"/>
     <meta name="robots" content="index,follow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>计票器</title>
+    <title>計票器</title>
     <link rel="stylesheet" href="style/frame.css"/>
     <link rel="stylesheet" href="Lib/footer.css">
     <link rel="stylesheet" href="Lib/button.css">
@@ -21,77 +21,77 @@
     <script src="Lib/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div id="title-div"><span class="button-i" contenteditable="true" oninput="LC.config.set_title($('#title').text(), true)" id="title">计票器</span></div>
+    <div id="title-div"><span class="button-i" contenteditable="true" oninput="LC.config.set_title($('#title').text(), true)" id="title">計票器</span></div>
     <button id="setting-icon" class="button-d" onclick="click_setting_icon();"><img src="img/settings.svg"></button>
     <div id="vote-tips">
-        <!--投票记录区-->
+        <!--投票記錄區-->
     </div>
     <div id="stat">
-        <span><span>当前废票数：</span><span id="invalid-vote">0</span></span>
-        <span><span>有效票数：</span><span id="valid-vote">0</span></span>
-        <span><span>总票数：</span><span id="total-vote">0</span></span>
+        <span><span>當前廢票數：</span><span id="invalid-vote">0</span></span>
+        <span><span>有效票數：</span><span id="valid-vote">0</span></span>
+        <span><span>總票數：</span><span id="total-vote">0</span></span>
     </div>
     <div id="voting-div">
-        <!--投票区-->
+        <!--投票區-->
         <span>
-            当前单次投票数:
+            當前單次投票數:
             <span id="voteNum" class="button-i" contenteditable="true" onpointerdown="$('#votenum').focus()" oninput="LC.config.set_voteSingle(parseInt($('#voteNum').text()), true);">1</span>
         </span>
         <button onclick="add_voteNum(1);" class="button-d">+</button>
         <button onclick="add_voteNum(-1);" class="button-d">-</button>
-        <button onclick="add_inVote();" class="button-d">废票</button>
+        <button onclick="add_inVote();" class="button-d">廢票</button>
         <div id="vote-buttons">
         </div>
     </div
     ><div id="rank-chart">
-        <!--图表排名区-->
+        <!--圖表排名區-->
     </div>
     <div id="settings-div" class="fullscreen none-display">
-        <!--设置-->
+        <!--設置-->
         <div class="button-d close-icon-fullscreen" onclick="click_setting_icon();">
 			<img src="img/close.svg">
 		</div>
-        <p>设置</p>
+        <p>設置</p>
         <p>
-            <span>标题: </span><input value="" type="text" id="titleSet" placeholder="请输入标题"/>
+            <span>標題: </span><input value="" type="text" id="titleSet" placeholder="請輸入標題"/>
         </p>
         <p>
-            <span>人员名单: </span>
-            <textarea id="electors-list" placeholder="用英文逗号分隔"></textarea>
+            <span>人員名單: </span>
+            <textarea id="electors-list" placeholder="用英文逗號分隔"></textarea>
         </p>
         <p>
-            <span title="此名次及以上才有效">主分割线: </span>
+            <span title="此名次及以上才有效">主分割線: </span>
             <input type="number" min="1" step="1" id="mainSepLineSet" placeholder="" title="此名次及以上才有效">
         </p>
         <p>
-            <span title="此名次及以上更好，可与主分割线重合">副分割线: </span>
-            <input type="number" min="0" step="1" id="secSepLineSet" placeholder="" title="此名次及以上更好，可与主分割线重合">
+            <span title="此名次及以上更好，可與主分割線重合">副分割線: </span>
+            <input type="number" min="0" step="1" id="secSepLineSet" placeholder="" title="此名次及以上更好，可與主分割線重合">
         </p>
         <p>
-            <span>投票区宽度: </span>
+            <span>投票區寬度: </span>
             <input type="range" id="resize-width" max="1000" onpointermove="$(':root').css({'--chart-width': (75 - parseInt($('#resize-width').val()) / 20).toFixed(1) + 'vw'})">
         </p>
         <p>
-            <button class="button-d" onclick="show_storage();">查看本地数据</button>
-            <button class="button-d" onclick="import_storage();">导入到本地数据</button>
-            <button class="button-d" onclick="reset_votes();">重置进度</button>
-            <button class="button-d" onclick="start_change_electors();">编辑人员</button>
+            <button class="button-d" onclick="show_storage();">查看本地數據</button>
+            <button class="button-d" onclick="import_storage();">導入到本地數據</button>
+            <button class="button-d" onclick="reset_votes();">重置進度</button>
+            <button class="button-d" onclick="start_change_electors();">編輯人員</button>
         </p>
         <p>
-            <button class="button-d" onclick="submit_setting(true);">确定并保存</button>
-            <button class="button-d" onclick="submit_setting();">确定</button>
+            <button class="button-d" onclick="submit_setting(true);">確定並保存</button>
+            <button class="button-d" onclick="submit_setting();">確定</button>
             <button class="button-d" onclick="reset_setting();">重置</button>
         </p>
     </div>
     <div id="electors-change" class="fullscreen none-display">
-        <!--人员调整（编辑）界面-->
+        <!--人員調整（編輯）界面-->
         <div class="button-d close-icon-fullscreen" onclick="close_electors_edit();">
 			<img src="img/close.svg">
 		</div>
         <div id="changing-ways" active="0">
-            <button class="button-d" onclick="start_electors_edit();">编辑人员</button
-            ><button class="button-d" onclick="start_electors_append();">批量添加人员</button
-            ><button class="button-d" onclick="start_electors_remove();">批量删除人员</button>
+            <button class="button-d" onclick="start_electors_edit();">編輯人員</button
+            ><button class="button-d" onclick="start_electors_append();">批量添加人員</button
+            ><button class="button-d" onclick="start_electors_remove();">批量刪除人員</button>
         </div>
         <div id="changing-frame"></div>
     </div>

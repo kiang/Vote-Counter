@@ -1,12 +1,12 @@
 "use strict";
 /**
- * @file 创建选举人类及方法
+ * @file 創建選舉人類及方法
  */
 /// <reference path = "../src/localstorage.ts" />
 /**
- * @brief 使用归并排序法排序列表（倒序，大的在前）
- * @param arr 数组
- * @param func_greater	用于比较arg1是否大于（或等于）arg2的函数
+ * @brief 使用歸併排序法排序列表（倒序，大的在前）
+ * @param arr 數組
+ * @param func_greater	用於比較arg1是否大於（或等於）arg2的函數
  */
 function sort(arr, func_greater = (a, b) => (a >= b)) {
     let len = arr.length;
@@ -72,7 +72,7 @@ var Ele;
     }
     Ele.ordinal_suffix = ordinal_suffix;
     Ele.electors = [];
-    Ele.rankAnimationPlaying = true; // 是否正在处理动画
+    Ele.rankAnimationPlaying = true; // 是否正在處理動畫
     Ele.totalVotes = 0;
     class Elector {
         constructor(id, name, vote = 0) {
@@ -127,7 +127,7 @@ var Ele;
         }
         get_rank() { return this.rank; }
         /**
-         * @param update_at_once	是否立即刷新进度条
+         * @param update_at_once	是否立即刷新進度條
          */
         set_rank(rank, update_at_once = true) {
             this.rank = rank;
@@ -162,10 +162,10 @@ var Ele;
             this.location = location;
         }
         add_vote() {
-            var voteSingle = LC.config.voteSingle, symbol = (voteSingle >= 0) ? "+" : "", // 额外的符号
+            var voteSingle = LC.config.voteSingle, symbol = (voteSingle >= 0) ? "+" : "", // 額外的符號
             color = (voteSingle > 0) ? "darkgreen" : ((voteSingle === 0) ? "black" : "purple");
             this.set_vote(this.vote + voteSingle);
-            $("#vote-tips").append($(`<span style="color: ${color}; opacity: 1;">${this.get_id()}号 ${this.get_name()} 票数${symbol}${voteSingle}</span>`));
+            $("#vote-tips").append($(`<span style="color: ${color}; opacity: 1;">${this.get_id()}號 ${this.get_name()} 票數${symbol}${voteSingle}</span>`));
         }
         move() {
             this.left += this.speed.x;

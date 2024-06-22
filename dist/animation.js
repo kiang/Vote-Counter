@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @file 刷新投票提示、排名动画
+ * @file 刷新投票提示、排名動畫
  */
 /// <reference path="../src/elector.ts"/>
 function fresh() {

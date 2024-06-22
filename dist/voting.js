@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @file 创建投票区或投票人的变更
+ * @file 創建投票區或投票人的變更
  */
 /// <reference path="../src/elector.ts" />
 /// <reference path="../src/localstorage.ts"/>

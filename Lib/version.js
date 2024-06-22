@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @file 定义Version类
+ * @file 定義Version類
  */
 var Ver;
 (function (Ver) {
