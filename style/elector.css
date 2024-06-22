@@ -9,7 +9,6 @@
 
 .vote-button>span:nth-of-type(1) {
 	grid-area: id;
-	font-family: Consolas, numberonly, 'Courier New';
 	align-self: center;
 	font-size: 2rem;
 }
